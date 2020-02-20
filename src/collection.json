@@ -1,9 +1,9 @@
 {
   "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
   "schematics": {
-    "alosaur-schematics": {
-      "description": "A blank schematic.",
-      "factory": "./alosaur-schematics/index#alosaurSchematics"
+    "app": {
+      "description": "Create Alosaur App",
+      "factory": "./libs/app/index#app"
     }
   }
 }

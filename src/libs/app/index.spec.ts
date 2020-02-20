@@ -9,7 +9,9 @@ const collectionPath = path.join(__dirname, '../../collection.json');
 describe('Alosaur App generation', () => {
   it('works', () => {
     const runner = new SchematicTestRunner('schematics', collectionPath);
-    const tree = runner.runSchematic('app', {}, Tree.empty());
+    const tree = runner.runSchematic('app', {
+      name: 'foo'
+    }, Tree.empty());
 
     expect(tree.files).toEqual([]);
   });

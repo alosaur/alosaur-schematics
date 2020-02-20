@@ -3,7 +3,8 @@
   "schematics": {
     "app": {
       "description": "Create Alosaur App",
-      "factory": "./libs/app/index#app"
+      "factory": "./libs/app/index#app",
+      "schema": "./libs/app/schema.json"
     }
   }
 }

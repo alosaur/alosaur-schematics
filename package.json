@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "description": "Alosaur schematics for generating files",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "npm run build && jasmine src/**/*.spec.js",
+    "copy:collection": "cpx src/collection.json dist && cpx 'src/libs/**/schema.json' dist/libs",
+    "copy:libs": "cpx 'src/libs/**/files/**/*.*' dist/libs && cpx 'src/libs/**/files/**/.!(gitignore)' dist/libs",
+    "postbuild": "yarn copy:collection && yarn copy:libs",
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "test": "npm run build && jasmine dist/**/*.spec.js",
     "preinstall": "$npm_execpath --silent run checkYarn",
     "checkYarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use YARN not NPM! ⚠️ ' && echo && exit 1)"
   },
@@ -28,7 +31,11 @@
     "url": "git+ssh://git@github.com/emjimadhu/alosaur-schematics.git"
   },
   "license": "MIT",
-  "schematics": "./src/collection.json",
+  "files": [
+    "dist/**/*"
+  ],
+  "main": "dist/index.js",
+  "schematics": "./dist/collection.json",
   "dependencies": {
     "@angular-devkit/core": "^8.3.23",
     "@angular-devkit/schematics": "^8.3.23",
@@ -36,5 +43,8 @@
     "@types/node": "^8.0.31",
     "jasmine": "^3.3.1",
     "typescript": "~3.5.3"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0"
   }
 }

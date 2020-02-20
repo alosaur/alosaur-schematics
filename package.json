@@ -1,7 +1,7 @@
 {
   "name": "alosaur-schematics",
   "version": "0.0.0",
-  "description": "A blank schematics",
+  "description": "Alosaur schematics",
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "npm run build && jasmine src/**/*_spec.js",
@@ -9,9 +9,24 @@
     "checkYarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use YARN not NPM! ⚠️ ' && echo && exit 1)"
   },
   "keywords": [
-    "schematics"
+    "schematics",
+    "deno",
+    "alosaur"
   ],
-  "author": "",
+  "author": {
+    "name": "Em Ji Madhu",
+    "email": "emjimadhu@gmail.com"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0",
+    "yarn": ">=1.21.0"
+  },
+  "homepage": "https://github.com/emjimadhu/alosaur-schematics#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/emjimadhu/alosaur-schematics.git"
+  },
   "license": "MIT",
   "schematics": "./src/collection.json",
   "dependencies": {

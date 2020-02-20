@@ -21,7 +21,9 @@
     "sourceMap": true,
     "strictNullChecks": true,
     "target": "es6",
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": ["node_modules/@types"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
   },
   "include": [
     "src/**/*"

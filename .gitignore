@@ -16,6 +16,7 @@ node_modules/
 npm-debug.log*
 yarn-error.log*
 dist/
+coverage/
 
 # Mac OSX Finder files.
 **/.DS_Store

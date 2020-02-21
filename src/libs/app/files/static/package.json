@@ -1,0 +1,10 @@
+{
+  "name": "<%= dasherize(name) %>",
+  "version": "1.0.0",
+  "description": "A Static File Alosaur boilerplate",
+  "scripts": {
+    "start": "deno run -A --importmap=imports.json --config ./tsconfig.json app.ts",
+    "format": "deno fmt \"**/**/*.ts\" \"app.ts\" --prettierrc=prettierrc.json"
+  },
+  "license": "ISC"
+}

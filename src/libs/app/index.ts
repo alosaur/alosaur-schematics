@@ -19,7 +19,6 @@ import { DEFAULT_APP_PATH, DEFAULT_BOILERPLATE } from '../../utilities/defaults'
 
 export function app(_options: IAppOptions): Rule {
   const options = transform(_options);
-  console.log(JSON.stringify(options, null, 2));
   return (tree: Tree, _context: SchematicContext) => {
     return branchAndMerge(
       chain([
@@ -42,11 +41,11 @@ function transform(source: IAppOptions): IAppOptions {
 
 function generate(options: IAppOptions) {
   return (context: SchematicContext) =>
-          apply(url(join('./files' as Path, <string>options.template)), [
-            template({
-              ...strings,
-              ...options,
-            }),
-            move(<string>options.path)
-          ])(context);
+    apply(url(join('./files' as Path, <string>options.template)), [
+      template({
+        ...strings,
+        ...options,
+      }),
+      move(<string>options.path)
+    ])(context);
 }

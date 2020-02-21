@@ -8,7 +8,7 @@
     "postbuild": "yarn copy:collection && yarn copy:libs",
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "test": "NODE_ENV=test jest -w 1 --no-cache --config jest.json",
-    "test:watch": "NODE_ENV=test npm run -s test -- --watchAll",
+    "test:watch": "NODE_ENV=test yarn -s test -- --watchAll",
     "lint": "eslint 'src/**/*.ts'",
     "lint:fix": "eslint 'src/**/*.ts' --fix",
     "preinstall": "$npm_execpath --silent run checkYarn",

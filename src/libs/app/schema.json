@@ -12,6 +12,23 @@
         "index": 0
       },
       "x-prompt": "What name would you like to use for the project?"
+    },
+    "template": {
+      "description": "The type of boilerplate",
+      "type": "string",
+      "default": "basic",
+      "enum": [
+        "basic",
+        "cors",
+        "db",
+        "docker",
+        "static"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the app."
     }
   },
   "required": [

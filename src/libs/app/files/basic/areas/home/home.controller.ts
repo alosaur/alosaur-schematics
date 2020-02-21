@@ -5,6 +5,7 @@ import {
   Cookie,
   ForbiddenError,
   Param,
+  Get,
   Post,
   QueryParam,
   Req,

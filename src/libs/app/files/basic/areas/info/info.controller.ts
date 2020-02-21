@@ -1,4 +1,8 @@
-import { Content, Controller, Get } from 'alosaur/mod.ts';
+import {
+  Content,
+  Controller,
+  Get
+} from 'alosaur/mod.ts';
 
 @Controller('/info')
 export class InfoController {

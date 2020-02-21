@@ -1,0 +1,12 @@
+{
+  "name": "<%= dasherize(name) %>",
+  "version": "1.0.0",
+  "description": "A Docker Alosaur boilerplate",
+  "scripts": {
+    "start": "deno run -A --importmap=imports.json --config ./tsconfig.json app.ts",
+    "format": "deno fmt \"**/**/*.ts\" \"app.ts\" --prettierrc=prettierrc.json",
+    "docker:build": "docker build -t alosaur-demo .",
+    "docker:run": "docker run -p 8000:8000 alosaur-demo"
+  },
+  "license": "ISC"
+}

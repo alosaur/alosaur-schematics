@@ -1,28 +1,44 @@
-# Getting Started With Schematics
+# Alosaur Schematics
 
-This repository is a basic Schematic implementation that serves as a starting point to create and publish Schematics to NPM.
+This repository contains schematics for Alosaur Web Framework
 
-### Testing
+> This project uses Yarn as package manager.
 
-To test locally, install `@angular-devkit/schematics-cli` globally and use the `schematics` command line tool. That tool acts the same as the `generate` command of the Angular CLI, but also has a debug mode.
+### How to use
 
-Check the documentation with
-```bash
-schematics --help
+```shell script
+npm i -g @angular-devkit/schematics-cli
+
+or
+
+yarn add -g @angular-devkit/schematics-cli
+
+git clone git@github.com:emjimadhu/alosaur-schematics.git
+
+cd alosaur-schematics && yarn install
+
+yarn build
+
+cd <some_directory>
+
+schematics <directory_to_cloned_alosaur-schematics>/dist/collection.json:<schema_name> [...flags] # Look at schemas section to see available schemas
 ```
 
-### Unit Testing
+### Schemas
 
-`npm run test` will run the unit tests, using Jasmine as a runner and test framework.
+1) `app` - Alosaur boilerplate generation
+    * Flags
+      * `name` - Name of the project. [Required]
+      * `template` - Type of Boilerplate to create (Default: `basic`)
+        * `Types` - basic, cors, db, docker and static
+      * `path` - Path to create project (Default: <current_directory>/<project-name>)
 
-### Publishing
+### Example
 
-To publish, simply do:
-
-```bash
-npm run build
-npm publish
+```shell script
+schematics ./alosaur-schematics/dist/collection.json:app --template=cors --name=cors-sample --debug=false
 ```
+
+> NOTE: `debug` flag should be false to create actual files
 
 That's it!
- 

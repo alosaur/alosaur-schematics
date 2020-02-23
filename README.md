@@ -33,6 +33,12 @@ schematics <directory_to_cloned_alosaur-schematics>/dist/collection.json:<schema
         * `Types` - basic, cors, db, docker and static
       * `path` - Path to create project (Default: <current_directory>/<project-name>)
 
+2) `controller` - Alosaur controller generation
+   * Flags
+       * `name` - Name of the Controller. [Required]
+       * `path` - Path to create Controller (Default: <project_directory>/<name>/<name>.controller.ts)
+       * `flat` - Flag to indicate if a directory is created. (Default: `false`)
+
 ### Example
 
 ```shell script

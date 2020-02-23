@@ -13,7 +13,8 @@
     },
     "controller": {
       "description": "Create Alosaur Controller",
-      "factory": "./libs/controller/index#controller"
+      "factory": "./libs/controller/index#controller",
+      "schema": "./libs/controller/schema.json"
     }
   }
 }

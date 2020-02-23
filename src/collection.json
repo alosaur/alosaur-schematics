@@ -10,6 +10,10 @@
       "description": "Create Alosaur Area",
       "factory": "./libs/area/index#area",
       "schema": "./libs/area/schema.json"
+    },
+    "controller": {
+      "description": "Create Alosaur Controller",
+      "factory": "./libs/controller/index#controller"
     }
   }
 }

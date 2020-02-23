@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "SchematicsAlosaurArea",
+  "title": "Generate Alosaur Area",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the Area.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What name would you like to use for the Area?"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "The path to create the area."
+    },
+    "flat": {
+      "type": "boolean",
+      "default": false,
+      "description": "Flag to indicate if a directory is created."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

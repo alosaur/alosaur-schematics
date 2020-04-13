@@ -1,4 +1,7 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import {
+  SchematicTestRunner,
+  UnitTestTree
+} from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 
 import { IAppOptions } from './schema';
@@ -11,7 +14,7 @@ describe('Alosaur App generation', () => {
 
   it('should manage name only', () => {
     const options: IAppOptions = {
-      name: 'foo',
+      name: 'foo'
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
@@ -27,13 +30,13 @@ describe('Alosaur App generation', () => {
       '/foo/areas/home/home.controller.ts',
       '/foo/areas/info/info.area.ts',
       '/foo/areas/info/info.controller.ts',
-      '/foo/middlwares/log.middlware.ts',
+      '/foo/middlwares/log.middlware.ts'
     ]);
   });
 
   it('should manage name to dasherize', () => {
     const options: IAppOptions = {
-      name: 'fooBar',
+      name: 'fooBar'
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;

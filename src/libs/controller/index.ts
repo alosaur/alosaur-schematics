@@ -2,29 +2,36 @@ import {
   apply,
   branchAndMerge,
   chain,
-  mergeWith, move,
+  mergeWith,
+  move,
   Rule,
   SchematicContext,
   template,
   Tree,
   url
 } from '@angular-devkit/schematics';
-import { join, Path, strings } from '@angular-devkit/core';
+import {
+  join,
+  Path,
+  strings
+} from '@angular-devkit/core';
 
 import { IControllerOptions } from './schema';
 import { mergeSourceRoot } from '../../utilities/source-root.helpers';
-import { Location, NameParser } from '../../utilities';
+import {
+  ILocation, NameParser
+} from '../../utilities';
 
 
 export function controller(_options: IControllerOptions): Rule {
   const options = transform(_options);
 
-  return (tree: Tree, _context: SchematicContext) => {
+  return (tree: Tree, _context: SchematicContext): any => {
     return branchAndMerge(
       chain([
         mergeSourceRoot(options),
         mergeWith(generate(options))
-      ]),
+      ])
     )(tree, _context);
   };
 }
@@ -32,7 +39,7 @@ export function controller(_options: IControllerOptions): Rule {
 function transform(source: IControllerOptions): IControllerOptions {
   const target: IControllerOptions = Object.assign({}, source);
 
-  const location: Location = new NameParser().parse(target);
+  const location: ILocation = new NameParser().parse(target);
   target.name = strings.dasherize(location.name);
   target.path = strings.dasherize(location.path);
   target.path = target.flat
@@ -42,12 +49,13 @@ function transform(source: IControllerOptions): IControllerOptions {
 }
 
 function generate(options: IControllerOptions) {
-  return (context: SchematicContext) =>
-    apply(url('./files'), [
+  return (context: SchematicContext): any => {
+    return apply(url('./files'), [
       template({
         ...strings,
-        ...options,
+        ...options
       }),
       move(<string>options.path)
     ])(context);
+  };
 }

@@ -1,7 +1,8 @@
 import {
   apply,
   branchAndMerge,
-  chain, mergeWith,
+  chain,
+  mergeWith,
   move,
   Rule,
   SchematicContext,
@@ -9,10 +10,16 @@ import {
   Tree,
   url
 } from '@angular-devkit/schematics';
-import { join, Path, strings } from '@angular-devkit/core';
+import {
+  join,
+  Path,
+  strings
+} from '@angular-devkit/core';
 
 import { IAreaOptions } from './schema';
-import { NameParser, Location } from '../../utilities';
+import {
+  NameParser, ILocation
+} from '../../utilities';
 import { IAppOptions } from '../app/schema';
 import { mergeSourceRoot } from '../../utilities/source-root.helpers';
 
@@ -20,12 +27,12 @@ import { mergeSourceRoot } from '../../utilities/source-root.helpers';
 export function area(_options: IAreaOptions): Rule {
   const options = transform(_options);
 
-  return (tree: Tree, _context: SchematicContext) => {
+  return (tree: Tree, _context: SchematicContext): any => {
     return branchAndMerge(
       chain([
         mergeSourceRoot(options),
         mergeWith(generate(options))
-      ]),
+      ])
     )(tree, _context);
   };
 }
@@ -33,7 +40,7 @@ export function area(_options: IAreaOptions): Rule {
 function transform(source: IAreaOptions): IAreaOptions {
   const target: IAreaOptions = Object.assign({}, source);
 
-  const location: Location = new NameParser().parse(target);
+  const location: ILocation = new NameParser().parse(target);
   target.name = strings.dasherize(location.name);
   target.path = strings.dasherize(location.path);
   target.path = target.flat
@@ -43,12 +50,13 @@ function transform(source: IAreaOptions): IAreaOptions {
 }
 
 function generate(options: IAppOptions) {
-  return (context: SchematicContext) =>
-    apply(url('./files'), [
+  return (context: SchematicContext): any => {
+    return apply(url('./files'), [
       template({
         ...strings,
-        ...options,
+        ...options
       }),
       move(<string>options.path)
     ])(context);
+  };
 }

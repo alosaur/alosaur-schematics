@@ -1,4 +1,7 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import {
+  SchematicTestRunner,
+  UnitTestTree
+} from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 
 import { IControllerOptions } from './schema';
@@ -15,7 +18,9 @@ describe('Alosaur Controller', () => {
     const tree: UnitTestTree = runner.runSchematic('controller', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo/foo.controller.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo/foo.controller.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo/foo.controller.ts')).toEqual(
       'import { Controller, Content, Get } from \'alosaur/mod.ts\';\n' +
@@ -42,7 +47,9 @@ describe('Alosaur Controller', () => {
     const tree: UnitTestTree = runner.runSchematic('controller', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/bar/foo/foo.controller.ts'),
+      files.find((filename: string) => {
+        return filename === '/bar/foo/foo.controller.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/bar/foo/foo.controller.ts')).toEqual(
       'import { Controller, Content, Get } from \'alosaur/mod.ts\';\n' +
@@ -70,7 +77,9 @@ describe('Alosaur Controller', () => {
     const tree: UnitTestTree = runner.runSchematic('controller', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/bar/foo/foo.controller.ts'),
+      files.find((filename: string) => {
+        return filename === '/bar/foo/foo.controller.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/bar/foo/foo.controller.ts')).toEqual(
       'import { Controller, Content, Get } from \'alosaur/mod.ts\';\n' +
@@ -97,7 +106,9 @@ describe('Alosaur Controller', () => {
     const tree: UnitTestTree = runner.runSchematic('controller', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo-bar/foo-bar.controller.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo-bar/foo-bar.controller.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo-bar/foo-bar.controller.ts')).toEqual(
       'import { Controller, Content, Get } from \'alosaur/mod.ts\';\n' +
@@ -125,7 +136,9 @@ describe('Alosaur Controller', () => {
     const tree: UnitTestTree = runner.runSchematic('controller', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo.controller.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo.controller.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo.controller.ts')).toEqual(
       'import { Controller, Content, Get } from \'alosaur/mod.ts\';\n' +

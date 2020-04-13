@@ -1,4 +1,7 @@
-import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
+import {
+  SchematicTestRunner,
+  UnitTestTree
+} from '@angular-devkit/schematics/testing';
 import * as path from 'path';
 
 import { IAreaOptions } from './schema';
@@ -15,7 +18,9 @@ describe('Alosaur Area', () => {
     const tree: UnitTestTree = runner.runSchematic('area', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo/foo.area.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo/foo.area.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo/foo.area.ts')).toEqual(
       'import { Area } from \'alosaur/mod.ts\';\n' +
@@ -32,7 +37,9 @@ describe('Alosaur Area', () => {
     const tree: UnitTestTree = runner.runSchematic('area', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/bar/foo/foo.area.ts'),
+      files.find((filename: string) => {
+        return filename === '/bar/foo/foo.area.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/bar/foo/foo.area.ts')).toEqual(
       'import { Area } from \'alosaur/mod.ts\';\n' +
@@ -50,7 +57,9 @@ describe('Alosaur Area', () => {
     const tree: UnitTestTree = runner.runSchematic('area', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/bar/foo/foo.area.ts'),
+      files.find((filename: string) => {
+        return filename === '/bar/foo/foo.area.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/bar/foo/foo.area.ts')).toEqual(
       'import { Area } from \'alosaur/mod.ts\';\n' +
@@ -67,7 +76,9 @@ describe('Alosaur Area', () => {
     const tree: UnitTestTree = runner.runSchematic('area', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo-bar/foo-bar.area.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo-bar/foo-bar.area.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo-bar/foo-bar.area.ts')).toEqual(
       'import { Area } from \'alosaur/mod.ts\';\n' +
@@ -85,7 +96,9 @@ describe('Alosaur Area', () => {
     const tree: UnitTestTree = runner.runSchematic('area', options);
     const files: string[] = tree.files;
     expect(
-      files.find(filename => filename === '/foo.area.ts'),
+      files.find((filename: string) => {
+        return filename === '/foo.area.ts';
+      })
     ).not.toBeUndefined();
     expect(tree.readContent('/foo.area.ts')).toEqual(
       'import { Area } from \'alosaur/mod.ts\';\n' +

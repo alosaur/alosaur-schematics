@@ -1,17 +1,22 @@
-import { basename, dirname, normalize, Path } from '@angular-devkit/core';
+import {
+  basename,
+  dirname,
+  normalize,
+  Path
+} from '@angular-devkit/core';
 
-export interface ParseOptions {
+export interface IParseOptions {
   name: string;
   path?: string;
 }
 
-export interface Location {
+export interface ILocation {
   name: string;
   path: Path;
 }
 
 export class NameParser {
-  public parse(options: ParseOptions): Location {
+  public parse(options: IParseOptions): ILocation {
     const nameWithoutPath: string = basename(options.name as Path);
     const namePath: string = dirname(
             (options.path === undefined ? '' : options.path)

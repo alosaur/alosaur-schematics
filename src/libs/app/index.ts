@@ -10,20 +10,28 @@ import {
   Tree,
   url
 } from '@angular-devkit/schematics';
-import { join, Path, strings } from '@angular-devkit/core';
+import {
+  join,
+  Path,
+  strings
+} from '@angular-devkit/core';
 
 import { IAppOptions } from './schema';
-import { Location, NameParser } from '../../utilities/name.parser';
-import { DEFAULT_APP_PATH, DEFAULT_BOILERPLATE } from '../../utilities/defaults';
+import {
+  ILocation,
+  NameParser
+} from '../../utilities/name.parser';
+import {
+  DEFAULT_APP_PATH,
+  DEFAULT_BOILERPLATE
+} from '../../utilities/defaults';
 
 
 export function app(_options: IAppOptions): Rule {
   const options = transform(_options);
-  return (tree: Tree, _context: SchematicContext) => {
+  return (tree: Tree, _context: SchematicContext): any => {
     return branchAndMerge(
-      chain([
-        mergeWith(generate(options))
-      ])
+      chain([mergeWith(generate(options))])
     )(tree, _context);
   };
 }
@@ -31,7 +39,7 @@ export function app(_options: IAppOptions): Rule {
 function transform(source: IAppOptions): IAppOptions {
   const target: IAppOptions = Object.assign({}, source);
 
-  const location: Location = new NameParser().parse(target);
+  const location: ILocation = new NameParser().parse(target);
   target.name = strings.dasherize(location.name);
   target.template = target.template !== undefined ? target.template : DEFAULT_BOILERPLATE;
   const path = strings.dasherize(location.path);
@@ -40,12 +48,13 @@ function transform(source: IAppOptions): IAppOptions {
 }
 
 function generate(options: IAppOptions) {
-  return (context: SchematicContext) =>
-    apply(url(join('./files' as Path, <string>options.template)), [
+  return (context: SchematicContext): any => {
+    return apply(url(join('./files' as Path, <string>options.template)), [
       template({
         ...strings,
-        ...options,
+        ...options
       }),
       move(<string>options.path)
     ])(context);
+  };
 }

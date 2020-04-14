@@ -12,7 +12,8 @@
     "plugin:jest-formatting/strict",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:unicorn/recommended"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -245,14 +246,6 @@
     "@typescript-eslint/no-inferrable-types": "off",
     "@typescript-eslint/explicit-function-return-type": 2,
     "@typescript-eslint/typedef": 2,
-    "unicorn/filename-case": [
-      "error",
-      {
-        "cases": {
-          "kebabCase": true
-        }
-      }
-    ],
     "jest/consistent-test-it": ["error", { "fn": "it" }],
     "jest/no-expect-resolves": 2,
     "jest/prefer-called-with": 2,

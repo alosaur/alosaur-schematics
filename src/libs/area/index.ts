@@ -16,26 +16,13 @@ import {
   strings
 } from '@angular-devkit/core';
 
-import { IAreaOptions } from './schema';
 import {
   NameParser, ILocation
 } from '../../utilities';
 import { IAppOptions } from '../app/schema';
 import { mergeSourceRoot } from '../../utilities/source-root.helpers';
+import { IAreaOptions } from './schema';
 
-
-export function area(_options: IAreaOptions): Rule {
-  const options = transform(_options);
-
-  return (tree: Tree, _context: SchematicContext): any => {
-    return branchAndMerge(
-      chain([
-        mergeSourceRoot(options),
-        mergeWith(generate(options))
-      ])
-    )(tree, _context);
-  };
-}
 
 function transform(source: IAreaOptions): IAreaOptions {
   const target: IAreaOptions = Object.assign({}, source);
@@ -58,5 +45,18 @@ function generate(options: IAppOptions) {
       }),
       move(<string>options.path)
     ])(context);
+  };
+}
+
+export function area(_options: IAreaOptions): Rule {
+  const options = transform(_options);
+
+  return (tree: Tree, _context: SchematicContext): any => {
+    return branchAndMerge(
+      chain([
+        mergeSourceRoot(options),
+        mergeWith(generate(options))
+      ])
+    )(tree, _context);
   };
 }

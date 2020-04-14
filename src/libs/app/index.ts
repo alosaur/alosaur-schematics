@@ -16,7 +16,6 @@ import {
   strings
 } from '@angular-devkit/core';
 
-import { IAppOptions } from './schema';
 import {
   ILocation,
   NameParser
@@ -25,16 +24,8 @@ import {
   DEFAULT_APP_PATH,
   DEFAULT_BOILERPLATE
 } from '../../utilities/defaults';
+import { IAppOptions } from './schema';
 
-
-export function app(_options: IAppOptions): Rule {
-  const options = transform(_options);
-  return (tree: Tree, _context: SchematicContext): any => {
-    return branchAndMerge(
-      chain([mergeWith(generate(options))])
-    )(tree, _context);
-  };
-}
 
 function transform(source: IAppOptions): IAppOptions {
   const target: IAppOptions = Object.assign({}, source);
@@ -56,5 +47,14 @@ function generate(options: IAppOptions) {
       }),
       move(<string>options.path)
     ])(context);
+  };
+}
+
+export function app(_options: IAppOptions): Rule {
+  const options = transform(_options);
+  return (tree: Tree, _context: SchematicContext): any => {
+    return branchAndMerge(
+      chain([mergeWith(generate(options))])
+    )(tree, _context);
   };
 }

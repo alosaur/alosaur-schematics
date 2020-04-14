@@ -16,25 +16,12 @@ import {
   strings
 } from '@angular-devkit/core';
 
-import { IControllerOptions } from './schema';
 import { mergeSourceRoot } from '../../utilities/source-root.helpers';
 import {
   ILocation, NameParser
 } from '../../utilities';
+import { IControllerOptions } from './schema';
 
-
-export function controller(_options: IControllerOptions): Rule {
-  const options = transform(_options);
-
-  return (tree: Tree, _context: SchematicContext): any => {
-    return branchAndMerge(
-      chain([
-        mergeSourceRoot(options),
-        mergeWith(generate(options))
-      ])
-    )(tree, _context);
-  };
-}
 
 function transform(source: IControllerOptions): IControllerOptions {
   const target: IControllerOptions = Object.assign({}, source);
@@ -57,5 +44,18 @@ function generate(options: IControllerOptions) {
       }),
       move(<string>options.path)
     ])(context);
+  };
+}
+
+export function controller(_options: IControllerOptions): Rule {
+  const options = transform(_options);
+
+  return (tree: Tree, _context: SchematicContext): any => {
+    return branchAndMerge(
+      chain([
+        mergeSourceRoot(options),
+        mergeWith(generate(options))
+      ])
+    )(tree, _context);
   };
 }

@@ -13,12 +13,15 @@ describe('Alosaur App generation', () => {
   const runner = new SchematicTestRunner('.', collectionPath);
 
   it('should manage name only', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'foo'
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo/README.md',
       '/foo/alosaur.json',
       '/foo/app.ts',
@@ -35,12 +38,15 @@ describe('Alosaur App generation', () => {
   });
 
   it('should manage name to dasherize', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'fooBar'
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo-bar/README.md',
       '/foo-bar/alosaur.json',
       '/foo-bar/app.ts',
@@ -57,13 +63,16 @@ describe('Alosaur App generation', () => {
   });
 
   it('should manage cors template', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'foo',
       template: TemplateEnum.CORS
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo/README.md',
       '/foo/alosaur.json',
       '/foo/app.ts',
@@ -77,13 +86,16 @@ describe('Alosaur App generation', () => {
   });
 
   it('should manage db template', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'foo',
       template: TemplateEnum.DB
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo/README.md',
       '/foo/alosaur.json',
       '/foo/app.ts',
@@ -100,13 +112,16 @@ describe('Alosaur App generation', () => {
   });
 
   it('should manage docker template', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'foo',
       template: TemplateEnum.DOCKER
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo/Dockerfile',
       '/foo/README.md',
       '/foo/alosaur.json',
@@ -123,13 +138,16 @@ describe('Alosaur App generation', () => {
   });
 
   it('should manage static template', () => {
+    expect.assertions(1);
+
     const options: IAppOptions = {
       name: 'foo',
       template: TemplateEnum.STATIC
     };
     const tree: UnitTestTree = runner.runSchematic('app', options);
     const files: string[] = tree.files;
-    expect(files).toEqual([
+
+    expect(files).toStrictEqual([
       '/foo/README.md',
       '/foo/alosaur.json',
       '/foo/app.ts',

@@ -1,11 +1,15 @@
 {
   "env": {
     "es6": true,
-    "node": true
+    "node": true,
+    "jest/globals": true
   },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended"
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style",
+    "plugin:jest-formatting/strict"
   ],
   "globals": {
     "Atomics": "readonly",
@@ -20,7 +24,9 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "unicorn"
+    "unicorn",
+    "jest",
+    "jest-formatting"
   ],
   "rules": {
     "indent": [
@@ -241,6 +247,20 @@
         "cases": {
           "kebabCase": true
         }
+      }
+    ],
+    "jest/consistent-test-it": ["error", { "fn": "it" }],
+    "jest/no-expect-resolves": 2,
+    "jest/prefer-called-with": 2,
+    "jest/prefer-expect-assertions": 2,
+    "jest/prefer-spy-on": 2,
+    "jest/prefer-strict-equal": 2,
+    "jest/prefer-todo": 2,
+    "jest/require-top-level-describe": 2,
+    "jest/lowercase-name": [
+      "error",
+      {
+        "ignore": ["describe"]
       }
     ]
   },

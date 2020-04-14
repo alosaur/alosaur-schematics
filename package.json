@@ -1,6 +1,6 @@
 {
   "name": "alosaur-schematics",
-  "version": "0.0.0",
+  "version": "0.3.0",
   "description": "Alosaur schematics for generating files",
   "scripts": {
     "copy:collection": "cpx src/collection.json dist && cpx 'src/libs/**/schema.json' dist/libs",

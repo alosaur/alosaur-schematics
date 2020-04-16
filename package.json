@@ -9,8 +9,8 @@
     "build": "rm -rf dist && tsc -p tsconfig.json",
     "test": "NODE_ENV=test jest -w 1 --no-cache --config jest.json",
     "test:watch": "NODE_ENV=test yarn -s test -- --watchAll",
-    "lint": "eslint 'src/**/*.ts'",
-    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "lint": "eslint -f formattify 'src/**/*.ts'",
+    "lint:fix": "eslint -f formattify 'src/**/*.ts' --fix",
     "git:commit": "git-cz",
     "preinstall": "$npm_execpath --silent run checkYarn",
     "checkYarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use YARN not NPM! ⚠️ ' && echo && exit 1)"
@@ -53,6 +53,7 @@
     "cpx": "^1.5.0",
     "cz-conventional-changelog": "3.1.0",
     "eslint": "^6.8.0",
+    "eslint-formatter-formattify": "^4.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-jest-formatting": "^1.2.0",

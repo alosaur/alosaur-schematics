@@ -2,43 +2,48 @@
   "name": "alosaur-schematics",
   "version": "0.3.0",
   "description": "Alosaur schematics for generating files",
-  "scripts": {
-    "copy:collection": "cpx src/collection.json dist && cpx 'src/libs/**/schema.json' dist/libs",
-    "copy:libs": "cpx 'src/libs/**/files/**/*' dist/libs && cpx 'src/libs/**/files/**/.!(gitignore)' dist/libs",
-    "postbuild": "yarn copy:collection && yarn copy:libs",
-    "build": "rm -rf dist && tsc -p tsconfig.json",
-    "test": "NODE_ENV=test jest -w 1 --no-cache --config jest.json",
-    "test:watch": "NODE_ENV=test yarn -s test -- --watchAll",
-    "lint": "eslint -f formattify 'src/**/*.ts'",
-    "lint:fix": "eslint -f formattify 'src/**/*.ts' --fix",
-    "git:commit": "git-cz",
-    "preinstall": "$npm_execpath --silent run checkYarn",
-    "checkYarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use YARN not NPM! ⚠️ ' && echo && exit 1)"
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0",
+    "yarn": ">=1.21.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/emjimadhu/alosaur-schematics.git"
+  },
+  "homepage": "https://github.com/emjimadhu/alosaur-schematics#readme",
+  "author": {
+    "email": "emjimadhu@gmail.com",
+    "name": "Em Ji Madhu"
   },
   "keywords": [
     "schematics",
     "deno",
     "alosaur"
   ],
-  "author": {
-    "name": "Em Ji Madhu",
-    "email": "emjimadhu@gmail.com"
-  },
-  "engines": {
-    "node": ">=12.0.0",
-    "npm": ">=6.0.0",
-    "yarn": ">=1.21.0"
-  },
-  "homepage": "https://github.com/emjimadhu/alosaur-schematics#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/emjimadhu/alosaur-schematics.git"
-  },
-  "license": "MIT",
+  "main": "dist/index.js",
   "files": [
     "dist/**/*"
   ],
-  "main": "dist/index.js",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsc -p tsconfig.json",
+    "postbuild": "yarn copy:collection && yarn copy:libs",
+    "checkYarn": "echo \"$npm_execpath\" | grep -q \"yarn\\.js$\" || (echo '⚠️  Use YARN not NPM! ⚠️ ' && echo && exit 1)",
+    "copy:collection": "cpx src/collection.json dist && cpx 'src/libs/**/schema.json' dist/libs",
+    "copy:libs": "cpx 'src/libs/**/files/**/*' dist/libs && cpx 'src/libs/**/files/**/.!(gitignore)' dist/libs",
+    "git:commit": "git-cz",
+    "lint": "eslint -f formattify 'src/**/*.ts'",
+    "lint:fix": "eslint -f formattify 'src/**/*.ts' --fix",
+    "preinstall": "$npm_execpath --silent run checkYarn",
+    "test": "NODE_ENV=test jest -w 1 --no-cache --config jest.json",
+    "test:watch": "NODE_ENV=test yarn -s test -- --watchAll"
+  },
   "schematics": "./dist/collection.json",
   "dependencies": {
     "@angular-devkit/core": "9.1.1",
@@ -62,10 +67,5 @@
     "jest": "25.3.0",
     "ts-jest": "25.3.1",
     "typescript": "3.8.3"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }

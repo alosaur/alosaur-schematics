@@ -16,7 +16,7 @@
     "template": {
       "description": "The type of boilerplate",
       "type": "string",
-      "default": "basic",
+      "default": "default",
       "enum": [
         "basic",
         "cors",
@@ -24,7 +24,8 @@
         "docker",
         "static",
         "angular",
-        "handlebars"
+        "handlebars",
+        "default"
       ]
     },
     "path": {

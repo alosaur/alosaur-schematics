@@ -5,5 +5,6 @@ export enum TemplateEnum {
   DOCKER = 'docker',
   STATIC = 'static',
   ANGULAR = 'angular',
-  HANDLEBARS = 'handlebars'
+  HANDLEBARS = 'handlebars',
+  DEFAULT = 'default'
 }

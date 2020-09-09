@@ -25,7 +25,8 @@
         "static",
         "angular",
         "handlebars",
-        "default"
+        "default",
+        "spa"
       ]
     },
     "path": {

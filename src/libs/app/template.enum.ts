@@ -6,5 +6,6 @@ export enum TemplateEnum {
   STATIC = 'static',
   ANGULAR = 'angular',
   HANDLEBARS = 'handlebars',
-  DEFAULT = 'default'
+  DEFAULT = 'default',
+  SPA = 'spa'
 }

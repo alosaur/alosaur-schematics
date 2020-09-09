@@ -1,5 +1,5 @@
 {
   "imports": {
-    "alosaur/": "https://deno.land/x/alosaur/src/"
+    "alosaur/": "https://deno.land/x/alosaur/"
   }
 }

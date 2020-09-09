@@ -1,70 +1,96 @@
 import {
-  Body,
-  Content,
   Controller,
-  Cookie,
   ForbiddenError,
-  Param,
+  Request,
+  Response,
+} from "alosaur/mod.ts";
+import {
   Get,
-  Post,
   QueryParam,
+  Cookie,
   Req,
   Res,
-  Response,
-  ServerRequest
-} from 'alosaur/mod.ts';
+  Post,
+  Body,
+  Param,
+  Delete,
+} from "alosaur/src/decorator/mod.ts";
 
-
-@Controller('/home')
+@Controller("/home")
 export class HomeController {
-
-  constructor() {}
-
-  @Get('/text')
+  @Get("/text")
   text(
-    @QueryParam('name') name: string,
-    @QueryParam('test') test: string,
-    @Cookie('username') username: string
+    @QueryParam("name") name: string,
+    @QueryParam("test") test: string,
+    @Cookie("username") username: string,
   ) {
-    return Content(`Hello world, ${name} ${test} ${username}`);
+    return `Hello world, ${name} ${test} ${username}`;
   }
 
-  @Get('/json')
+  @Get("/json")
   json(
-    @Req() request: ServerRequest,
+    @Req() request: Request,
     @Res() response: Response,
-    @QueryParam('name') name: string
+    @QueryParam("name") name: string,
   ) {
-    return Content(response);
+    return response.getRaw();
   }
 
-  @Get('/error')
-  error(){
-    throw new ForbiddenError('error');
+  @Get("/json/")
+  obj() {
+    return {};
   }
 
-  @Get('/test')
+  @Get("/error")
+  error() {
+    throw new ForbiddenError("error");
+  }
+
+  @Get("/query")
+  query(
+    @QueryParam("a") a: string,
+    @QueryParam("b") b: string,
+    @QueryParam("c") c: string,
+  ) {
+    return { a, b, c };
+  }
+
+  @Get("/test")
   gerTests() {
-    return Content('test');
+    return "test";
   }
 
-  @Get('/test/:id')
-  gerParamId(@Param('id') id) {
-    return Content(id);
+  @Get("/test/:id")
+  gerParamId(@Param("id") id: string) {
+    return id;
   }
 
-  @Get('/test/:id/:name')
-  gerParamIdName(@Param('id') id, @Param('name') name) {
-    return Content(`${id} ${name}`);
+  @Get("/test/:id/:name")
+  gerParamIdName(@Param("id") id: string, @Param("name") name: string) {
+    return `${id} ${name}`;
   }
 
-  @Get('/test/:id/:name/detail')
-  gerParamIdNameDetail(@Param('id') id, @Param('name') name) {
-    return Content(`${id} ${name} detail`);
+  @Get("/test/:id/:name/detail")
+  gerParamIdNameDetail(@Param("id") id: string, @Param("name") name: string) {
+    return `${id} ${name} this is details page`;
   }
 
-  @Post('/post')
-  post(@Body() body, @QueryParam('name') name: string) {
-    return Content(body);
+  @Post("/post")
+  post(@Body() body: any, @QueryParam("name") name: string) {
+    return body;
   }
+
+  @Delete("/delete/:id")
+  async delete(@Param("id") id: number) {
+    await delay(500);
+    return id;
+  }
+}
+
+function delay(duration: number): Promise<any> {
+  return new Promise(function (resolve, reject) {
+    setTimeout(function () {
+      resolve();
+    }, duration);
+  });
 }

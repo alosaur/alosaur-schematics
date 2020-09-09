@@ -1,12 +1,8 @@
-import { App } from 'alosaur/mod.ts';
+import { App } from "alosaur/mod.ts";
 
-import { HomeArea } from './areas/home/home.area.ts';
-import { InfoArea } from './areas/info/info.area.ts';
-import { Log } from './middlwares/log.middlware.ts';
+import { settings } from "./app-settings.ts";
 
-const app = new App({
-  areas: [HomeArea, InfoArea],
-  middlewares: [Log]
-});
+// create application
+const app = new App(settings);
 
 app.listen();

@@ -1,16 +1,16 @@
-import { Client } from 'postgres/mod.ts';
+import { Client } from "postgres/mod.ts";
 
 export class Database {
   client: Client;
-  constructor(){
+  constructor() {
     this.client = new Client({
       user: "postgres",
       database: "users",
-      host: "localhost",
-      port: "5432"
+      hostname: "localhost",
+      port: 5432,
     });
   }
-  async query(sql): Promise<{rows: any[]}> {
+  async query(sql: string): Promise<{ rows: any[] }> {
     await this.client.connect();
     const result = await this.client.query(sql);
     await this.client.end();

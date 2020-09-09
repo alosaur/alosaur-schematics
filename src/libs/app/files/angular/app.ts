@@ -12,7 +12,7 @@ const app = new App({
 
 app.useViewRender({
   type: "angular",
-  basePath: `${Deno.cwd()}/examples/angular/views/`,
+  basePath: "./views/",
   getBody: async (path: string, model: Object, config: ViewRenderConfig) =>
     await engine.render({ document: indexHtml, url: path }),
 });

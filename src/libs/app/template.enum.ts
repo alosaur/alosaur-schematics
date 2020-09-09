@@ -3,5 +3,6 @@ export enum TemplateEnum {
   CORS = 'cors',
   DB = 'db',
   DOCKER = 'docker',
-  STATIC = 'static'
+  STATIC = 'static',
+  ANGULAR = 'angular'
 }

@@ -22,7 +22,8 @@
         "cors",
         "db",
         "docker",
-        "static"
+        "static",
+        "angular"
       ]
     },
     "path": {

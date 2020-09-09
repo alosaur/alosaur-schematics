@@ -4,7 +4,7 @@
   "description": "A CORS Alosaur boilerplate",
   "license": "ISC",
   "scripts": {
-    "format": "deno fmt \"**/**/*.ts\" \"app.ts\" --prettierrc=prettierrc.json",
-    "start": "deno run -A --importmap=imports.json --config ./tsconfig.json app.ts"
+    "format": "deno fmt **/**/*.ts app.ts",
+    "start": "deno run -A --unstable --importmap=imports.json --config ./tsconfig.json app.ts"
   }
 }

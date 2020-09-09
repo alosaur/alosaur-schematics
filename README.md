@@ -13,7 +13,7 @@ or
 
 yarn add -g @angular-devkit/schematics-cli
 
-git clone git@github.com:emjimadhu/alosaur-schematics.git
+git clone git@github.com:alosaur/alosaur-schematics.git
 
 cd alosaur-schematics && yarn install
 
@@ -29,8 +29,8 @@ schematics <directory_to_cloned_alosaur-schematics>/dist/collection.json:<schema
 1) `app` - Alosaur boilerplate generation
     * Flags
       * `name` - Name of the project. [Required]
-      * `template` - Type of Boilerplate to create (Default: `basic`)
-        * `Types` - basic, cors, db, docker and static
+      * `template` - Type of Boilerplate to create (Default: `default`)
+        * `Types` - default, angular, handlebars, spa, basic, cors, db, docker and static
       * `path` - Path to create project (Default: <current_directory>/<project-name>)
       
  2) `area` - Alosaur area generation

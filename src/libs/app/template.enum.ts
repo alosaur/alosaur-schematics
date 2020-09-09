@@ -4,5 +4,6 @@ export enum TemplateEnum {
   DB = 'db',
   DOCKER = 'docker',
   STATIC = 'static',
-  ANGULAR = 'angular'
+  ANGULAR = 'angular',
+  HANDLEBARS = 'handlebars'
 }

@@ -23,7 +23,8 @@
         "db",
         "docker",
         "static",
-        "angular"
+        "angular",
+        "handlebars"
       ]
     },
     "path": {

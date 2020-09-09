@@ -1,70 +1,62 @@
 import {
-  Body,
-  Content,
   Controller,
-  Cookie,
+  Content,
+  Response,
+  ServerRequest,
   ForbiddenError,
-  Param,
   Get,
-  Post,
   QueryParam,
+  Cookie,
   Req,
   Res,
-  Response,
-  ServerRequest
-} from 'alosaur/mod.ts';
+  Post,
+  Body,
+  Param,
+} from "alosaur/mod.ts";
 
-
-@Controller('/home')
+@Controller("/home")
 export class HomeController {
-
   constructor() {}
-
-  @Get('/text')
+  @Get("/text")
   text(
-    @QueryParam('name') name: string,
-    @QueryParam('test') test: string,
-    @Cookie('username') username: string
+    @QueryParam("name") name: string,
+    @QueryParam("test") test: string,
+    @Cookie("username") username: string,
   ) {
     return Content(`Hello world, ${name} ${test} ${username}`);
   }
-
-  @Get('/json')
+  @Get("/json")
   json(
     @Req() request: ServerRequest,
     @Res() response: Response,
-    @QueryParam('name') name: string
+    @QueryParam("name") name: string,
   ) {
     return Content(response);
   }
 
-  @Get('/error')
-  error(){
-    throw new ForbiddenError('error');
+  @Get("/error")
+  error() {
+    throw new ForbiddenError("error");
   }
 
-  @Get('/test')
+  @Get("/test")
   gerTests() {
-    return Content('test');
+    return Content("test");
   }
-
-  @Get('/test/:id')
-  gerParamId(@Param('id') id) {
+  @Get("/test/:id")
+  gerParamId(@Param("id") id: string) {
     return Content(id);
   }
-
-  @Get('/test/:id/:name')
-  gerParamIdName(@Param('id') id, @Param('name') name) {
+  @Get("/test/:id/:name")
+  gerParamIdName(@Param("id") id: string, @Param("name") name: string) {
     return Content(`${id} ${name}`);
   }
-
-  @Get('/test/:id/:name/detail')
-  gerParamIdNameDetail(@Param('id') id, @Param('name') name) {
+  @Get("/test/:id/:name/detail")
+  gerParamIdNameDetail(@Param("id") id: string, @Param("name") name: string) {
     return Content(`${id} ${name} detail`);
   }
-
-  @Post('/post')
-  post(@Body() body, @QueryParam('name') name: string) {
+  @Post("/post")
+  post(@Body() body: any, @QueryParam("name") name: string) {
     return Content(body);
   }
 }

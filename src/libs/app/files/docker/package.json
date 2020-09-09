@@ -6,7 +6,7 @@
   "scripts": {
     "docker:build": "docker build -t alosaur-demo .",
     "docker:run": "docker run -p 8000:8000 alosaur-demo",
-    "format": "deno fmt \"**/**/*.ts\" \"app.ts\" --prettierrc=prettierrc.json",
-    "start": "deno run -A --importmap=imports.json --config ./tsconfig.json app.ts"
+    "format": "deno fmt **/**/*.ts app.ts",
+    "start": "deno run -A --unstable --importmap=imports.json --config ./tsconfig.json app.ts"
   }
 }

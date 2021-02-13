@@ -1,3 +1,14 @@
+# This repository is no longer supported, all templates have been moved to alosaur/cli
+
+Use this:
+https://github.com/alosaur/cli
+
+
+
+
+
+------------------------
+
 # Alosaur Schematics
 
 This repository contains schematics for Alosaur Web Framework
